@@ -1,6 +1,7 @@
 resource "aws_security_group" "mysg" {
     name = "terraform-sg"
     description = "it has all traffic"
+    vpc_id = aws_vpc.myvpc.id
 
     ingress {
         from_port = 0
