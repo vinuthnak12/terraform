@@ -1,13 +1,15 @@
-resource "aws_instance" "myserver {
-    tags = {
-        Name = var.iname
-    }
+resource "aws_instance" "myserver" {
+    count         = var.icount
 
-    ami = var.ami_id
+    ami           = var.ami_id
     instance_type = var.itype
-    key_name = var.ikey
+    key_name      = var.ikey
+
     root_block_device {
         volume_size = var.volume
     }
-    var.icount
-} 
+
+    tags = {
+        Name = var.iname
+    }
+}
